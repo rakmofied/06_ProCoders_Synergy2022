@@ -8,6 +8,11 @@ const UserSchema = new Schema({
     required: true,
     unique: true,
   },
+  type: {
+    type: String,
+    enum: ['TPO', 'Exam Cell'],
+    deafult: null
+  }
 });
 
 UserSchema.plugin(passportLocalMongoose);
