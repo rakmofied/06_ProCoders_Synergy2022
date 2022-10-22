@@ -33,7 +33,10 @@ module.exports.renderLogin = (req, res) => {
 module.exports.login = (req, res) => {
   try {
     console.log("Hello Inside Login controller");
-    res.redirect("/register");
+    // if (req.user.type === "TPO" || req.user.type === "Exam Cell") {
+    //   res.redirect("/register");
+    // }
+    res.redirect("/userdashboard");
   } catch (e) {
     console.log(e);
   }

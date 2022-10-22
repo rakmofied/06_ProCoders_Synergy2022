@@ -8,6 +8,7 @@ const app = express();
 const engine = require("ejs-mate");
 const userRoutes = require("./route/user");
 const artRoutes = require("./route/arts");
+const dashboardRoutes = require("./route/dashboard");
 const { urlencoded } = require("body-parser");
 const res = require("express/lib/response");
 const flash = require("connect-flash");
@@ -26,7 +27,7 @@ app.set("view engine", "ejs");
 app.engine("ejs", engine);
 app.set("views", path.join(__dirname, "views"));
 
-const dbUrl = process.env.MONGODB;
+const dbUrl = process.env.URL;
 const secret = process.env.SECRET || "thisshouldbeabettersecret";
 
 const store = new MongoStore({
@@ -72,6 +73,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/", userRoutes);
+
+app.use("/userdashboard", dashboardRoutes);
 
 // app.use("*", (err, res, req, next) => {
 //   res.send("Hello Something Gone Wrong..!!");
