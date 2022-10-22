@@ -395,15 +395,26 @@ Transcript online - indiantranscripts.com">
             </div>
             <!-- end logo -->
             <div class="col-md-7 col-xs-2 width-auto pull-right accordion-menu xs-no-padding-right">
-             -->
+         
                <div class="navbar-collapse collapse pull-right" id="navbar-collapse-toggle-1">
                   <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal" data-in="fadeIn" data-out="fadeOut">
-                                    <!-- start menu item -->
-                                    
+                                
+                    
+                      
+                                              
 
-                                                <a class="btn btn-medium signin_1"  href="https://www.indiantranscripts.com/index.php/home/sign_in" style="    background-color: #1215b0 !important; padding: 3px 15px 6px 15px;border-radius: 14px;font-size: 16px;">LOGOUT</a> 
+                                              
+                                               <% if (currentUser === undefined){ %>
+                                                 <li>
+                                                <a class="btn btn-medium signin_1"  href="/login" style="    background-color: #1215b0 !important; padding: 3px 15px 6px 15px;border-radius: 14px;font-size: 16px;">LOGIN</a> 
                                                </li>
-                                             
+                                                <% }else{%>
+                                                <li>
+                                                <a class="btn btn-medium signin_1"  href="/logout" style="    background-color: #1215b0 !important; padding: 3px 15px 6px 15px;border-radius: 14px;font-size: 16px;">LOGOUT</a> 
+                                               </li>
+
+                                               <% } %>   
+                                   
                                                          </div>
             </div>
          </div>
@@ -554,7 +565,7 @@ Transcript online - indiantranscripts.com">
 
             
             <div class="row">
-                <a href="/login">
+                <a href="/userdashboard/transcriptform">
                     <div class="col-xl-4 col-lg-4 col-md-offset-4 wow fadeInUp animated" data-wow-delay="100ms"
                         data-wow-duration="1500ms"
                         style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: fadeInUp;">

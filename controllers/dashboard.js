@@ -12,9 +12,12 @@ module.exports.rendertranscriptPage = (req, res) => {
   res.render("users/tform");
 };
 
-module.exports.feedDetails = (req, res) => {
+module.exports.feedDetails = async (req, res) => {
   const transcript = new Transcript(req.body.transcript);
   transcript.paymentStatus = false;
   transcript.status = 1;
-  res.send(transcript);
+  console.log(transcript);
+  await transcript.save();
+  req.flash("success", "Successfully made a new Artwork!");
+  res.redirect(`/userdashboard`);
 };

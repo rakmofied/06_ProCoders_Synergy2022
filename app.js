@@ -13,7 +13,7 @@ const { urlencoded } = require("body-parser");
 const res = require("express/lib/response");
 const flash = require("connect-flash");
 const passport = require("passport");
-const localpassport = require("passport-local");
+const LocalStratergy = require("passport-local");
 const User = require("./models/user");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -56,13 +56,18 @@ app.use(session(sessionConfig));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new localpassport(User.authenticate()));
+passport.use(new LocalStratergy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
+  console.log("IN MIDDLEWARE");
+
   res.locals.currentUser = req.user;
+
+  console.log("IN MIDDLEWARE");
+
   next();
 });
 

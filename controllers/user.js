@@ -36,8 +36,19 @@ module.exports.login = (req, res) => {
     // if (req.user.type === "TPO" || req.user.type === "Exam Cell") {
     //   res.redirect("/register");
     // }
+
     res.redirect("/userdashboard");
   } catch (e) {
     console.log(e);
   }
+};
+
+module.exports.logout = (req, res) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    console.log("Logout");
+    res.redirect("/userdashboard");
+  });
 };
