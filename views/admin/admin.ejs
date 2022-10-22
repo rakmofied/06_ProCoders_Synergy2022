@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+      integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/css/admin.css" />
+    <title>Admin</title>
+  </head>
+  <body>
+    <div class="topnav">
+      <a class="active" href="#home"
+        ><h3 class="h3 mb-0 ls-tight"><%= loggeduser.name %></h3></a
+      >
+      <div class="topnav-right">
+        <span>Username</span>
+        <a href="#about"><i class="bi bi-box-arrow-left"></i> Logout</a>
+      </div>
+    </div>
+    <hr />
+    <!-- Main content -->
+    <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+      <!-- Header -->
+      <header class="bg-surface-primary border-bottom pb-5 pt-6">
+        <div class="container-fluid">
+          <div class="mb-npx">
+            <div class="row align-items-center">
+              <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                <!-- Title -->
+                <h1 class="h2 mb-0 ls-tight">Applications</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Main -->
+      <main class="py-6 bg-surface-secondary">
+        <div class="container-fluid">
+          <div class="card shadow border-0 mb-7">
+            <div class="table-responsive">
+              <table class="table table-hover table-nowrap">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Reason</th>
+                    <th scope="col">Roll No</th>
+                    <th scope="col">Payment</th>
+                    <th scope="col">Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(var i=0; i < data.length; i++) { %>
+                  <tr>
+                    <td>
+                      <img
+                        src="https://source.unsplash.com/random"
+                        class="avatar avatar-sm rounded-circle me-2"
+                        alt="temp"
+                      />
+                      <a class="text-heading font-semibold" href="#">
+                        <%= data[i].name %>
+                      </a>
+                    </td>
+                    <td><%= data[i].date %></td>
+                    <td><%= data[i].type %></td>
+                    <td><%= data[i].rollno %></td>
+                    <td><%= data[i].paymentStatus %></td>
+                    <td>
+                      <span class="badge badge-lg badge-dot">
+                        <% if(data[i].paymentStatus==1){ %>
+                        <i class="bg-dark"></i>In Process <% }
+                        if(data[i].paymentStatus==2){ %>
+                        <i class="bg-warning"></i>TPO Approved <% } else { %>
+                        <i class="bg-success"></i>Generated <% } %>
+                      </span>
+                    </td>
+                    <td class="text-end">
+                      <a href="#" class="btn btn-sm btn-neutral">View</a>
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-square btn-neutral text-danger-hover"
+                      >
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
