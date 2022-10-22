@@ -15,6 +15,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStratergy = require("passport-local");
 const User = require("./models/user");
+const Transcript = require("./models/transcript");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
