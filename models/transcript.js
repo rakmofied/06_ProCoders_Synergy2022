@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const TranscriptSchema = new Schema({
   username: {
-    type: String,
-    required: true,
+    type: Schema.Types.ObjectId,
+    ref: 'User',
   },
   type: {
     type: String,

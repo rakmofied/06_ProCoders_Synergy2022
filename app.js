@@ -26,7 +26,7 @@ app.set("view engine", "ejs");
 app.engine("ejs", engine);
 app.set("views", path.join(__dirname, "views"));
 
-const dbUrl = process.env.MONGODB;
+const dbUrl = process.env.URL;
 const secret = process.env.SECRET || "thisshouldbeabettersecret";
 
 const store = new MongoStore({
