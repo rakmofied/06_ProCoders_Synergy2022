@@ -8,6 +8,7 @@ const app = express();
 const engine = require("ejs-mate");
 const userRoutes = require("./route/user");
 const artRoutes = require("./route/arts");
+const dashboardRoutes = require("./route/dashboard");
 const { urlencoded } = require("body-parser");
 const res = require("express/lib/response");
 const flash = require("connect-flash");
@@ -73,6 +74,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/", userRoutes);
+
+app.use("/userdashboard", dashboardRoutes);
 
 // app.use("*", (err, res, req, next) => {
 //   res.send("Hello Something Gone Wrong..!!");
